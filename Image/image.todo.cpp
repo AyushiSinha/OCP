@@ -4,7 +4,7 @@
 #include <stack>
 #include <queue>
 #include <sstream>
-#include <direct.h>
+//#include <direct.h>
 #include <omp.h>
 
 //Need to adjust this to fix MATLAB needs
