@@ -1,0 +1,1 @@
+mex -IImage -IIMAGE_OUT -IJPEG -IJPEG_OUT -IUtil -L. -lJPEG JPEG/*.cpp Image/*.cpp IMAGE_OUT/image.obj Util/cmdLineParser.cpp main.cpp -output FindReticula
