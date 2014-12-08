@@ -1,1 +1,0 @@
-mex -IImage -IUtil Image/image.todo.cpp Util/cmdLineParser.cpp main.cpp -output FindReticula
