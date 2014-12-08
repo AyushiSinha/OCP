@@ -1,5 +1,16 @@
+% Ayushi Sinha
+% 12/8/2014
+%
+% This code shows how to use FindReticula. FindReticula annotates
+% axoplasmic reticula (AR) in neural EM data. This example downloads a cube
+% of neural EM data (AC4), annoates AR, and upload the annotations. 
+%
+% PLEASE CHANGE THE TOKEN NAME AND AUTHOR NAME BEFORE RUNNING (indicated)!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Download cube of data
-fprintf('Downloading cube... ' ) ;
+fprintf('Downloading cube (AC4)... ' ) ;
 oo = OCP();
 oo.setServerLocation('http://braingraph1dev.cs.jhu.edu');
 oo.setImageToken('kasthuri11cc');
@@ -15,6 +26,8 @@ q.setType(eOCPQueryType.imageDense);
 imageAC4 = oo.query(q);
 fprintf('Done.\n' ) ;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 fprintf('Finding reticula... ' ) ;
 % Allocate space for ourput cube
 out = zeros(size(imageAC4.data));
@@ -22,6 +35,8 @@ out = zeros(size(imageAC4.data));
 % Find Reticula per slice 
 FindReticula( '--in', double(imageAC4.data), '--out' ,out, '--axoplasmicreticula');
 fprintf('Done.\n' ) ;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Compute connected components to find Reticula strands
 fprintf('Computing connected components... ' ) ;
@@ -34,7 +49,7 @@ E = RAMONVolume;
 E.setXyzOffset([4400,5440,1100]);
 oo.setImageToken('kasthuri11cc');
 
-% Use token name for your database
+% Use token name for your database (CHANGE THIS!!!)
 oo.setAnnoToken('kat11_ayushi_AR10'); 
 fprintf('Done.\n' ) ;
 
@@ -52,7 +67,7 @@ for i = 1:length(rp)
     AR.setClass(eRAMONOrganelleClass.axoplasmicReticula);
     AR.setResolution(1);
     
-    % Pick relevant author name for your upload
+    % Pick relevant author name for your upload (CHANGE THIS!!!)
     AR.setAuthor('Ayushi_ReticulaUpload_December14');
 
     AR.setVoxelList(E.local2Global(pixLoc));
