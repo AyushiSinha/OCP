@@ -5,7 +5,7 @@
 #include "cmdLineParser.h"
 
 //#ifdef WIN32
-int strcasecmp(char* c1,char* c2){return stricmp(c1,c2);}
+int strcasecmp(char* c1,char* c2){return strcmp(c1,c2);}
 //#endif
 
 cmdLineReadable::cmdLineReadable(void){set=0;}
