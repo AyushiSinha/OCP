@@ -52,7 +52,7 @@ int MatlabImage::AxoplasmicReticula(MatlabImage image , MatlabImage output) cons
 	/*int blk = 0 , lght = 0 , intnsty = 0 ;
 	intensity( outputImage , intnsty , blk , lght );
 	printf( "Total intensity = %d, Black pixel = %d, Light pixel = %d\n" , intnsty , blk , lght+2 );*/
-
+	
 	int blk = 45 ; int lght = 85 ;
 
 	int anno = 1;							
