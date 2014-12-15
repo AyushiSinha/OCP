@@ -10,7 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Download cube of data
-fprintf('Downloading cube (AC4)... ' ) ;
+fprintf('Downloading cube... ' ) ;
 oo = OCP();
 oo.setServerLocation('http://braingraph1dev.cs.jhu.edu');
 oo.setImageToken('kasthuri11cc');
@@ -18,9 +18,9 @@ oo.setImageToken('kasthuri11cc');
 q = OCPQuery;
 q.setType(eOCPQueryType.annoDense);
 
-q.setXRange([4400,5424]);
-q.setYRange([5440,6464]);
-q.setZRange([1100,1200]);
+q.setXRange([7552, 8320]);
+q.setYRange([4224, 5120]);
+q.setZRange([1001, 1101]);
 q.setResolution(1);
 q.setType(eOCPQueryType.imageDense);
 imageAC4 = oo.query(q);
@@ -47,7 +47,7 @@ fprintf( 'Done. Number of connected components = %d.\n' , length(rp) ) ;
 
 fprintf('Initializing upload... ' ) ;
 E = RAMONVolume;
-E.setXyzOffset([4400,5440,1100]);
+E.setXyzOffset([7552,4224,1001]);
 oo.setImageToken('kasthuri11cc');
 
 % Use token name for your database (CHANGE THIS!!!)

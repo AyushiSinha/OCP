@@ -14,7 +14,7 @@
 // Image processing stuff //
 ////////////////////////////
 
-float clamp ( float value ) ;
+/*float clamp ( float value ) ;
 float min ( float a , float b ) ;
 float max ( float a , float b ) ;
 
@@ -40,7 +40,7 @@ float max(float a, float b) {
 	else
 		return b;
 }
-
+*/
 int MatlabImage::AxoplasmicReticula(MatlabImage image , MatlabImage output) const {
 	
 	// look for pixels that are dark enough
@@ -55,14 +55,14 @@ int MatlabImage::AxoplasmicReticula(MatlabImage image , MatlabImage output) cons
 	
 	int blk = 45 ; int lght = 85 ;
 
-	int anno = 1;							
-	string id, annoid, dir;
+//	int anno = 1;							
+//	string id, annoid, dir;
 	int previous_i = 0, previous_j = 0;
 	
 	int r = image.rows; int c = image.cols ; int s = image.slices ;
 	for (int ns=0;ns<s;ns++){ 
-		for (int j=0;j<r;j++){
-			for(int i=0;i<c;i++){
+		for (int j=0;j<c;j++){
+			for(int i=0;i<r;i++){
 				if (output.get(i,j,ns) == 0) {
 					double bl = (double)blk ;
 					int black = (int)bl; 
@@ -82,7 +82,7 @@ int MatlabImage::AxoplasmicReticula(MatlabImage image , MatlabImage output) cons
 							for (int rj=j+1-radius;rj<=j+1+radius;rj++){
 								if (row%diametre == 0){
 									for (int ri=i+1-radius;ri<=i+1+radius;ri++){
-										if (rj < 0 || ri < 0 || rj >= r || ri >= c)
+										if (rj < 0 || ri < 0 || rj >= c || ri >= r)
 											continue;
 										if (image.get(ri,rj,ns) < black) {
 											cluster_i.push(ri);
@@ -95,7 +95,7 @@ int MatlabImage::AxoplasmicReticula(MatlabImage image , MatlabImage output) cons
 								}
 								else {
 									for (int ri=i+1-radius;ri<=i+1+radius;ri+=step){
-										if (rj < 0 || ri < 0 || rj >= r || ri >= c)
+										if (rj < 0 || ri < 0 || rj >= c || ri >= r)
 											continue;
 										if (image.get(ri,rj,ns) < black) {	
 											cluster_i.push(ri);
@@ -123,9 +123,10 @@ int MatlabImage::AxoplasmicReticula(MatlabImage image , MatlabImage output) cons
 							cluster_j = stack<int>();
 						}
 						else {					
-							stringstream s;
-							s << anno;
-							id = s.str();
+//							stringstream s;
+//							s << anno;
+//							id = s.str();
+							if (!cluster_i.empty() && !cluster_j.empty()){
 
 							previous_i = cluster_i.top();
 							previous_j = cluster_j.top();
@@ -135,9 +136,9 @@ int MatlabImage::AxoplasmicReticula(MatlabImage image , MatlabImage output) cons
 								output.set(new_i,new_j,ns,255);
 								cluster_i.pop();
 								cluster_j.pop();
-							}
-							anno++;
-							s.clear();
+							} }
+//							anno++;
+//							s.clear();
 						}
 					}
 				}
