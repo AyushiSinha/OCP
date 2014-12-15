@@ -28,12 +28,13 @@ fprintf('Done.\n' ) ;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-fprintf('Finding reticula... ' ) ;
+fprintf('Allocating size for output... ' ) ;
 % Allocate space for ourput cube
 out = zeros(size(imageAC4.data));
+fprintf('Done.\nFinding Reticula...\n');
 
 % Find Reticula per slice 
-FindReticula( '--in', double(imageAC4.data), '--out' ,out, '--axoplasmicreticula');
+FindReticula( '--in', double(imageAC4.data), '--out', out, '--axoplasmicreticula');
 fprintf('Done.\n' ) ;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
